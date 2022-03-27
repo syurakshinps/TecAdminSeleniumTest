@@ -37,11 +37,11 @@ String elementToClickToFind = "/html/body/div[1]/div[3]/div[1]/noindex/" +
 
 
         driver.get(baseURL);
-/*
-        driver.get(catalogueButton);
+
+//        driver.get(catalogueButton);
         WebElement catalogue = driver.findElement(By.xpath(catalogueButton));
         catalogue.click();
-*/
+
 
         driver.quit();
     }
