@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 /*
 import java.io.File;
@@ -37,13 +38,18 @@ String catalogueButton = "/html/body/div[1]/div[3]/noindex/div/div/div[2]/div[1]
 String searchInputField = "//html/body/div[1]/div[3]/noindex/div/div/div[2]/div[2]/div/div/form/div[1]/div/div/div/input";
 String searchText ="кошачий корм";
 String clickToFind = "/html/body/div[1]/div[3]/noindex/div/div/div[2]/div[2]/div/div/form/div[1]/button/span";
-
-
+String priceFromField = "/html/body/div[1]/div[3]/div[3]/div[5]/aside/div[2]/div/div/div/div/div[2]/div[1]/div/div/fieldset/div/ul/li[1]/p/input";
+String priceToFiled = "/html/body/div[1]/div[3]/div[3]/div[5]/aside/div[2]/div/div/div/div/div[2]/div[1]/div/div/fieldset/div/ul/li[2]/p/input";
+String priceMin = "5000";
+String priceMax = "10000";
+String goodsKind = "//*[@id=\"catalogPopup\"]/div/div/div/div/div/div/div[1]/div/ul/li[13]/a/span";
+String treatsForCatsKind = "/html/body/div[21]/div[3]/div[1]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/div/div/div/div[1]/div[1]/ul/li[3]/div/a";
+String treatsURL = "https://market.yandex.ru/catalog--lakomstva-dlia-koshek/62819/list?hid=15963668";
 
         driver.get(baseURL);
         if (driver.getPageSource().contains("робот"))
         {
-            System.out.println("яндекс хилые и трусливые говнюки");
+            System.out.println("младший брат гугля ниасилил отладку через селениум\r\nстыд и позор, так-то");
    //          https://www.browserstack.com/guide/how-to-handle-captcha-in-selenium
         }
 
@@ -51,15 +57,35 @@ String clickToFind = "/html/body/div[1]/div[3]/noindex/div/div/div[2]/div[2]/div
 
         WebElement catalogue = driver.findElement(By.xpath(catalogueButton));
         catalogue.click();
+        System.out.println("Кликнули на каталог");
         Thread.sleep(10000);
-
+/*
         driver.findElement(By.xpath(searchInputField)).sendKeys(searchText);
+        System.out.println("вбили текст " + searchText);
         Thread.sleep(10000);
 
         WebElement clickable = driver.findElement(By.xpath(clickToFind));
+        System.out.println("нажали искать " + clickToFind);
         clickable.click();
         Thread.sleep(10000);
 
+        driver.findElement(By.xpath(priceFromField)).sendKeys(priceMin);
+        System.out.println("min price " + priceMin);
+        Thread.sleep(10000);
+
+
+        driver.findElement(By.xpath(priceToFiled)).sendKeys(priceMax);
+        System.out.println("max price " + priceMax);
+        Thread.sleep(10000);
+*/
+        Actions action = new Actions(driver);
+        WebElement ele = driver.findElement(By.xpath(goodsKind));
+        action.moveToElement(ele).perform();
+        System.out.println("hover Зоотовары");
+        Thread.sleep(10000);
+
+        driver.get(treatsURL);
+        Thread.sleep(10000);
 
 
         /*
