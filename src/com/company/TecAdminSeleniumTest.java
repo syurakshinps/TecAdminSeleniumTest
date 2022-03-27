@@ -40,12 +40,13 @@ String searchText ="кошачий корм";
 String clickToFind = "/html/body/div[1]/div[3]/noindex/div/div/div[2]/div[2]/div/div/form/div[1]/button/span";
 String priceFromField = "/html/body/div[1]/div[3]/div[3]/div[5]/aside/div[2]/div/div/div/div/div[2]/div[1]/div/div/fieldset/div/ul/li[1]/p/input";
 String priceToFiled = "/html/body/div[1]/div[3]/div[3]/div[5]/aside/div[2]/div/div/div/div/div[2]/div[1]/div/div/fieldset/div/ul/li[2]/p/input";
-String priceMin = "5000";
-String priceMax = "10000";
+String priceMin = "50";
+String priceMax = "150";
 String goodsKind = "//*[@id=\"catalogPopup\"]/div/div/div/div/div/div/div[1]/div/ul/li[13]/a/span";
 String treatsForCatsKind = "/html/body/div[21]/div[3]/div[1]/div/div/div/div/div/div/div[2]/div/div/div/div[1]/div/div/div/div/div/div/div/div[1]/div[1]/ul/li[3]/div/a";
 String treatsURL = "https://market.yandex.ru/catalog--lakomstva-dlia-koshek/62819/list?hid=15963668";
-
+String deliveryServiceRadioBtn ="/html/body/div[1]/div[3]/div[3]/div[5]/aside/div[2]/div/div/div/div/div[2]/div[20]/div/div/fieldset/ul/li[1]/div/label/div";
+String makerName = "/html/body/div[1]/div[3]/div[3]/div[5]/aside/div[2]/div/div/div/div/div[2]/div[4]/div/div/fieldset/ul/li[11]/div/a/label/div";
         driver.get(baseURL);
         if (driver.getPageSource().contains("робот"))
         {
@@ -85,7 +86,33 @@ String treatsURL = "https://market.yandex.ru/catalog--lakomstva-dlia-koshek/6281
         Thread.sleep(10000);
 
         driver.get(treatsURL);
+        System.out.println("Перешли в лакомства");
         Thread.sleep(10000);
+
+        driver.findElement(By.xpath(priceFromField)).sendKeys(priceMin);
+        System.out.println("min price " + priceMin);
+        Thread.sleep(10000);
+
+
+        driver.findElement(By.xpath(priceToFiled)).sendKeys(priceMax);
+        System.out.println("max price " + priceMax);
+        Thread.sleep(10000);
+
+        WebElement radio1 = driver.findElement(By.xpath(deliveryServiceRadioBtn));
+        radio1.click();
+        System.out.println("Доставка курьером бутон клац");
+        Thread.sleep(10000);
+
+        WebElement radio2 = driver.findElement(By.xpath(makerName));
+        radio2.click();
+        System.out.println("Деревенские лакомства - маректолога потом уволили, надеюсь");
+        Thread.sleep(10000);
+
+
+
+
+
+
 
 
         /*
